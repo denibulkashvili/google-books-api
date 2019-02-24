@@ -10,21 +10,36 @@ class App extends Component {
     super(props);
     this.state = {
       searchQuery: "",
-      data:[],
+      volumes: [],
       loaded: true,
       placeholder: "Loading...",
       
     }
-    this.handleChange = this.handleChange.bind(this);
+    this.handleSearchQueryChange = this.handleSearchQueryChange.bind(this);
+    this.handleVolumeChange = this.handleVolumeChange.bind(this);
   }
 
-  handleChange = (event) => {
+  handleSearchQueryChange = (event) => {
     const newQuery = event.target.value
     this.setState({
       searchQuery: newQuery
     }, () => {
       console.log(this.state.searchQuery)
     })
+  }
+
+  handleVolumeChange = (volumes) => {
+    console.log(volumes)
+    console.log(volumes.map((book) => book.volumeInfo.title))
+    // this.setState({
+    //   volumes
+    // }, () => {
+    //   console.log(this.bookList)
+    // })
+  }
+
+  get bookList() {
+    return this.state.volumes;
   }
 
   render() {
@@ -34,9 +49,14 @@ class App extends Component {
     return (
       <div className="App">
         <div className="cover">Cover</div>
-        <Search onChange={this.handleChange} />
-        <DataLoader placeholder={placeholder} searchQuery={searchQuery} loaded={loaded} />
+        <Search onChange={this.handleSearchQueryChange} />
+        <DataLoader placeholder={placeholder} 
+                    searchQuery={searchQuery} 
+                    loaded={loaded} 
+                    volumes={this.handleVolumeChange}
+        />
         <div className="display">
+          {this.bookList}
           <Book />
         </div>
       </div>
