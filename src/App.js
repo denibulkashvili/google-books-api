@@ -10,8 +10,10 @@ class App extends Component {
     super(props);
     this.state = {
       searchQuery: "",
+      data:[],
+      loaded: true,
       placeholder: "Loading...",
-      data:[]
+      
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -26,10 +28,14 @@ class App extends Component {
   }
 
   render() {
+
+    const { placeholder, searchQuery, loaded } = this.state;
+
     return (
       <div className="App">
         <div className="cover">Cover</div>
         <Search onChange={this.handleChange} />
+        <DataLoader placeholder={placeholder} searchQuery={searchQuery} loaded={loaded} />
         <div className="display">
           <Book />
         </div>
