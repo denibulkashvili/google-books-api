@@ -6,6 +6,15 @@ import DataLoader from './components/DataLoader';
 import Book from './components/Book';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchQuery: "",
+      placeholder: "Loading...",
+      data:[]
+    }
+  }
+
   render() {
     return (
       <div className="App">
