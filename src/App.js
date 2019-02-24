@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import Search from './components/Search';
+import DataLoader from './components/DataLoader';
+import Book from './components/Book';
+
 class App extends Component {
   render() {
     return (
       <div className="App">
-        Hello world!
+        <div className="cover">Cover</div>
+        <Search />
+        <div className="display">
+          <Book />
+        </div>
       </div>
     );
   }
