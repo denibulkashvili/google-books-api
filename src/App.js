@@ -13,13 +13,23 @@ class App extends Component {
       placeholder: "Loading...",
       data:[]
     }
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange = (event) => {
+    const newQuery = event.target.value
+    this.setState({
+      searchQuery: newQuery
+    }, () => {
+      console.log(this.state.searchQuery)
+    })
   }
 
   render() {
     return (
       <div className="App">
         <div className="cover">Cover</div>
-        <Search />
+        <Search onChange={this.handleChange} />
         <div className="display">
           <Book />
         </div>
