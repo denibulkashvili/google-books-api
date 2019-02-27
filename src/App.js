@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './App.css';
 
 import Search from './components/Search';
-import DataLoader from './components/DataLoader';
 import Book from './components/Book';
 
 class App extends Component {
@@ -18,32 +18,41 @@ class App extends Component {
     this.handleSearchQuerySubmit = this.handleSearchQuerySubmit.bind(this);
   }
 
-  handleSearchQuerySubmit = (data) => {
-    console.log(data)
-    // this.setState({
-    //   searchQuery: newQuery,
-    //   loaded: true
-    // }, () => {
-    //   console.log(this.state.searchQuery)
-    // })
+  handleSearchQuerySubmit = (newQuery) => {
+    this.setState({
+      searchQuery: newQuery,
+      loaded: true
+    }, () => {
+      console.log(this.state.searchQuery);
+      this.callAPI()
+    })
   }
+
+  callAPI() {
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${this.state.searchQuery}`)
+    .then((response) => {
+      this.setState({
+        data: response.data.items
+      }, () => {
+        console.log("Logging data ..")
+        console.log(this.state.data)
+      })
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  }
+
   renderBooks() {
-    return <Book />
+    return <Book title={"Harrrry Potter"}/>
   }
 
   render() {
-
-    let { placeholder, searchQuery, loaded } = this.state;
 
     return (
       <div className="App">
         <div className="cover">Cover</div>
         <Search onSearchSubmit={this.handleSearchQuerySubmit} />
-        <DataLoader placeholder={placeholder} 
-                    searchQuery={searchQuery} 
-                    loaded={loaded} 
-                    data={this.state.data}
-        />
         <div className="display">
           {this.renderBooks()}
         </div>
