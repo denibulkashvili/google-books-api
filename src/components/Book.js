@@ -17,7 +17,7 @@ class Book extends Component {
         Title: {this.props.title} 
         Authors: {this.authors}
         Link: {this.props.url}
-        <img src={this.props.cover} />
+        <img src={this.props.cover} alt="book-cover"/>
       </div>
     )
   }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
-import hero from './images/hero.jpg';
+
 
 import Search from './components/Search';
 import Book from './components/Book';
@@ -60,9 +60,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="cover">
-          <img src={hero} className="hero-img" alt="hero-img"/>
-        </div>
+        <div className="banner"></div>
         <Search onSearchSubmit={this.handleSearchQuerySubmit} />
         <div className="display">
           {this.renderedBooks}

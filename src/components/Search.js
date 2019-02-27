@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+
+
+
 class Search extends Component {
   constructor(props) {
     super(props);
@@ -23,15 +28,17 @@ class Search extends Component {
 
   render() {
     return (
-      <div className="search">
-        <form onSubmit={ this.handleSubmit }>
-          <label>
-            Search
-            <input type="text" name="name" onChange={ this.handleChange }/>
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
-      </div>
+      <form onSubmit={ this.handleSubmit } className="search">
+        <input type="text" 
+               name="name" 
+               onChange={ this.handleChange } 
+               className="search-input" 
+               placeholder="Search books"
+               required
+        />
+        <button type="submit"><FontAwesomeIcon icon={faSearch} className="search-button"/></button>
+      </form>
+      
     )
   }
   
