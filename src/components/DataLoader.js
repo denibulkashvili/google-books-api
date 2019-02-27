@@ -12,8 +12,7 @@ const DataLoader = (props) => {
     .catch((error) => {
       console.log(error)
     })
-
-
+    
   return (
     <div>
       {loaded ? `Search query: ${searchQuery}` : placeholder}

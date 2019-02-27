@@ -10,54 +10,42 @@ class App extends Component {
     super(props);
     this.state = {
       searchQuery: "",
-      volumes: [],
-      loaded: true,
+      data: [],
+      loaded: false,
       placeholder: "Loading...",
       
     }
-    this.handleSearchQueryChange = this.handleSearchQueryChange.bind(this);
-    this.handleVolumeChange = this.handleVolumeChange.bind(this);
+    this.handleSearchQuerySubmit = this.handleSearchQuerySubmit.bind(this);
   }
 
-  handleSearchQueryChange = (event) => {
-    const newQuery = event.target.value
-    this.setState({
-      searchQuery: newQuery
-    }, () => {
-      console.log(this.state.searchQuery)
-    })
-  }
-
-  handleVolumeChange = (volumes) => {
-    console.log(volumes)
-    console.log(volumes.map((book) => book.volumeInfo.title))
+  handleSearchQuerySubmit = (data) => {
+    console.log(data)
     // this.setState({
-    //   volumes
+    //   searchQuery: newQuery,
+    //   loaded: true
     // }, () => {
-    //   console.log(this.bookList)
+    //   console.log(this.state.searchQuery)
     // })
   }
-
-  get bookList() {
-    return this.state.volumes;
+  renderBooks() {
+    return <Book />
   }
 
   render() {
 
-    const { placeholder, searchQuery, loaded } = this.state;
+    let { placeholder, searchQuery, loaded } = this.state;
 
     return (
       <div className="App">
         <div className="cover">Cover</div>
-        <Search onChange={this.handleSearchQueryChange} />
+        <Search onSearchSubmit={this.handleSearchQuerySubmit} />
         <DataLoader placeholder={placeholder} 
                     searchQuery={searchQuery} 
                     loaded={loaded} 
-                    volumes={this.handleVolumeChange}
+                    data={this.state.data}
         />
         <div className="display">
-          {this.bookList}
-          <Book />
+          {this.renderBooks()}
         </div>
       </div>
     );
