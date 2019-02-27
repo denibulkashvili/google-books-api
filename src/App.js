@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
+import hero from './images/hero.jpg';
 
 import Search from './components/Search';
 import Book from './components/Book';
@@ -13,7 +14,6 @@ class App extends Component {
       data: [],
       loaded: false,
       placeholder: "Loading...",
-      
     }
     this.handleSearchQuerySubmit = this.handleSearchQuerySubmit.bind(this);
   }
@@ -43,18 +43,29 @@ class App extends Component {
     })
   }
 
-  renderBooks() {
-    return <Book title={"Harrrry Potter"}/>
+  get renderedBooks() {
+    const booksList = this.state.data
+    
+    return booksList.map((book, i) => <Book title={book.volumeInfo.title} 
+                                            key={i}
+                                            authors={book.volumeInfo.authors}
+                                            publisher={book.volumeInfo.publisher}
+                                            url={book.volumeInfo.previewLink}
+                                            cover={book.volumeInfo.imageLinks.thumbnail}
+                                      />)
+    
   }
 
   render() {
 
     return (
       <div className="App">
-        <div className="cover">Cover</div>
+        <div className="cover">
+          <img src={hero} className="hero-img" alt="hero-img"/>
+        </div>
         <Search onSearchSubmit={this.handleSearchQuerySubmit} />
         <div className="display">
-          {this.renderBooks()}
+          {this.renderedBooks}
         </div>
       </div>
     );
