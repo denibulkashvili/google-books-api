@@ -29,7 +29,9 @@ class App extends Component {
   }
 
   callAPI() {
-    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${this.state.searchQuery}`)
+    const formattedQuery = this.state.searchQuery.split(" ").join("+") 
+    console.log(`Formatted: ${formattedQuery}`)
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${formattedQuery}`)
     .then((response) => {
       this.setState({
         data: response.data.items
