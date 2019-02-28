@@ -64,7 +64,7 @@ class App extends Component {
       <div className="App">
         <div className="banner"></div>
         <Search onSearchSubmit={this.handleSearchQuerySubmit} />
-        <div className="display">
+        <div className="books-grid">
           {this.renderedBooks}
         </div>
       </div>

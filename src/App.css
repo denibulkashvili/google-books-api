@@ -6,6 +6,10 @@
   background-image: url('./images/banner.jpg');
   height: 193px;
   filter: opacity(50%);
+  width: 100%;
+  background-size:contain;
+  background-position:center;
+
 }
 
 .search {
@@ -36,3 +40,36 @@ input[type="text"]::placeholder {
 .search-button {
   width: 15vw;
 } 
+
+.books-grid {
+  display: grid;
+  grid-template-columns: 22vw 22vw 22vw 22vw;
+  grid-gap: 2vw;
+  justify-content: center;	
+  grid-template-rows: auto;
+}
+
+.book-wrapper {
+  margin: 0 auto;
+
+  border: 1px solid black;
+}
+
+
+/* MEDIA-QUERIES */
+@media only screen and (max-width: 1200px) {
+  .books-grid {
+    grid-template-columns: 30vw 30vw 30vw;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .books-grid {
+    grid-template-columns: 45vw 45vw;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .books-grid {
+    grid-template-columns: 90vw;
+  }
+}

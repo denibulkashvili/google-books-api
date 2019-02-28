@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 
+
 class Book extends Component {
   
   get authors() {
@@ -13,11 +14,11 @@ class Book extends Component {
 
   render() {
     return (
-      <div className="book">
+      <div className="book-wrapper">
+        <img src={this.props.cover} alt="book-cover"/>
         Title: {this.props.title} 
         Authors: {this.authors}
-        Link: {this.props.url}
-        <img src={this.props.cover} alt="book-cover"/>
+        Link: <a href={this.props.url}>See Inside</a>
       </div>
     )
   }
