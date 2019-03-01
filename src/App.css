@@ -43,23 +43,62 @@ input[type="text"]::placeholder {
 
 .books-grid {
   display: grid;
-  grid-template-columns: 22vw 22vw 22vw 22vw;
+  grid-template-columns: repeat(3, 400px); /*change sizes to pixels by dividing the screen width by the nummber of cols*/
   grid-gap: 2vw;
   justify-content: center;	
-  grid-template-rows: auto;
+  grid-auto-rows: 250px;
 }
 
 .book-wrapper {
-  margin: 0 auto;
-
-  border: 1px solid black;
+  margin: 0;
+  background: rgba(166, 215, 233, 0.575);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(5,81,103,0.33);
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
-
+.book-cover{
+  grid-column: 1/2;
+  position: relative;
+  top: -10px;
+  left: -10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(5,81,103,0.33);
+}
+.book-cover img {
+  width: 200px;
+}
+.book-content {
+  grid-column: 2/4;
+}
+.book-url{
+  grid-column: 1/4;
+  justify-self: end; 
+  align-self: flex-end;
+  padding: 5px;
+  width: 50%;
+  font-size: 1em;
+  height: 40px;
+  position: relative;
+  bottom: -5px;
+  right: -5px;
+}
+button.book-url {
+  width: 120px;
+}
+.book-url a {
+  color: aliceblue;
+  text-decoration: none;
+}
+.book-url:hover {
+  transform: scale(1.2);
+  background: #B51B01;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(5,81,103,0.33);
+}
 
 /* MEDIA-QUERIES */
 @media only screen and (max-width: 1200px) {
   .books-grid {
-    grid-template-columns: 30vw 30vw 30vw;
+    grid-template-columns: repeat(3, 280px);
   }
 }
 
