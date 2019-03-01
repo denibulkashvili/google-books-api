@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
+import noImage from './images/noImage.jpg'
 
 
 import Search from './components/Search';
@@ -53,7 +54,9 @@ class App extends Component {
                                             authors={book.volumeInfo.authors}
                                             publisher={book.volumeInfo.publisher}
                                             url={book.volumeInfo.previewLink}
-                                            cover={book.volumeInfo.imageLinks.thumbnail}
+                                            cover={
+                                              book.volumeInfo.imageLinks !== undefined ? book.volumeInfo.imageLinks.thumbnail : noImage
+                                            }
                                       />)
     
   }

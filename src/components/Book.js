@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 
 
+
 class Book extends Component {
   
   get authors() {
@@ -11,6 +12,7 @@ class Book extends Component {
     }
     return authors.length === 1 ? authors[0] : authors.join(", ");
   }
+
 
   render() {
     return (
