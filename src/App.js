@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 import noImage from './images/noImage.jpg'
+import octocat from './images/octocat.png'
 
 
 import Search from './components/Search';
@@ -66,6 +67,9 @@ class App extends Component {
     return (
       <div className="App">
         <div className="banner"></div>
+        <a href="https://github.com/denibulkashvili/google-books-api">
+          <img src={octocat} alt="octocat-icon" className="octocat-icon"/>
+        </a>
         <Search onSearchSubmit={this.handleSearchQuerySubmit} />
         <div className="books-grid">
           {this.renderedBooks}

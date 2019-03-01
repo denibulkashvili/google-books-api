@@ -9,7 +9,15 @@
   width: 100%;
   background-size:contain;
   background-position:center;
-
+}
+.octocat-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  filter: grayscale(1);
+}
+.octocat-icon:hover {
+  filter: none;
 }
 
 .search {
