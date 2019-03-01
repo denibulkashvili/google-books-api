@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import noImage from './images/noImage.jpg'
 import octocat from './images/octocat.png'
+import spinner from './images/spinner.gif'
 
 
 import Search from './components/Search';
@@ -14,7 +15,7 @@ class App extends Component {
     this.state = {
       searchQuery: "",
       data: [],
-      loaded: false,
+      loading: false,
       placeholder: "Loading...",
     }
     this.handleSearchQuerySubmit = this.handleSearchQuerySubmit.bind(this);
@@ -22,8 +23,7 @@ class App extends Component {
 
   handleSearchQuerySubmit = (newQuery) => {
     this.setState({
-      searchQuery: newQuery,
-      loaded: true
+      searchQuery: newQuery
     }, () => {
       console.log(this.state.searchQuery);
       this.callAPI()
@@ -33,10 +33,12 @@ class App extends Component {
   callAPI() {
     const formattedQuery = this.state.searchQuery.split(" ").join("+") 
     console.log(`Formatted: ${formattedQuery}`)
+    this.setState({ loading: true })
     axios.get(`https://www.googleapis.com/books/v1/volumes?q=${formattedQuery}`)
     .then((response) => {
       this.setState({
-        data: response.data.items
+        data: response.data.items,
+        loading: false
       }, () => {
         console.log("Logging data ..")
         console.log(this.state.data)
@@ -65,15 +67,16 @@ class App extends Component {
   render() {
 
     return (
+      
       <div className="App">
         <div className="banner"></div>
         <a href="https://github.com/denibulkashvili/google-books-api">
           <img src={octocat} alt="octocat-icon" className="octocat-icon"/>
         </a>
         <Search onSearchSubmit={this.handleSearchQuerySubmit} />
-        <div className="books-grid">
-          {this.renderedBooks}
-        </div>
+        
+        {this.state.loading ? <img src={spinner} alt="spinner" className="spinner" /> : <div className="books-grid"> {this.renderedBooks} </div>}
+        
       </div>
     );
   }
