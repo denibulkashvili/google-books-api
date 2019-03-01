@@ -41,6 +41,10 @@ input, button {
 input[type="text"]::placeholder {
   color: #ACB3B5;
 }
+input:focus{
+  outline: none;
+  box-shadow: 2px 3px 4px rgba(247, 98, 98, 0.397);
+}
 .search-input {
   width: 40vw;
   padding-left: 20px;
@@ -51,7 +55,7 @@ input[type="text"]::placeholder {
 
 .books-grid {
   display: grid;
-  grid-template-columns: repeat(3, 400px); /*change sizes to pixels by dividing the screen width by the nummber of cols*/
+  grid-template-columns: repeat(3, 400px);
   grid-gap: 2vw;
   justify-content: center;	
   grid-auto-rows: 250px;
