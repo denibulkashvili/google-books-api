@@ -10,7 +10,7 @@ class Book extends Component {
     if (authors === undefined) {
       return "Author: Unknown";
     }
-    return authors.length === 1 ? `Author: ${authors[0]}` : `Authors: ${authors.join(", ")}` ;
+    return authors.length === 1 ? authors[0] : authors.join(", ");
   }
 
 
@@ -19,9 +19,9 @@ class Book extends Component {
       <div className="book-wrapper">
         <img className="book-cover" src={this.props.cover} alt="book-cover"/>
         <div className="book-content">
-          <p className="book-title">Title: {this.props.title} </p>
-          <p className="book-authors">{this.authors} </p>
-          <p className="book-authors">Publisher: {this.props.publisher}</p> 
+          <p className="book-title">{this.props.title} </p>
+          <p className="book-authors"><b>{this.props.authors === 1 ? "Author:" : "Authors:"}</b> {this.authors}</p>
+          <p className="book-publisher"><b>Publisher:</b> {this.props.publisher}</p> 
         </div>
         <button className="book-url"><a href={this.props.url}>See the Book</a></button>
       </div>
