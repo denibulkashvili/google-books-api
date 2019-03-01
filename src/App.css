@@ -14,7 +14,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  filter: grayscale(1);
+  filter: sepia(0.4);
 }
 .octocat-icon:hover {
   filter: none;
