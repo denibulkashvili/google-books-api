@@ -51,7 +51,9 @@ class App extends Component {
 
   get renderedBooks() {
     const booksList = this.state.data
-    
+    if (booksList === undefined) {
+      return <div className="error">Couldn't find any books! Try searching again. </div>
+    }
     return booksList.map((book, i) => <Book title={book.volumeInfo.title} 
                                             key={i}
                                             authors={book.volumeInfo.authors}
