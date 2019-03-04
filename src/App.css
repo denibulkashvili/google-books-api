@@ -138,3 +138,12 @@ button.book-url {
     grid-gap: 5vw;
   }
 }
+@media only screen and (max-width: 500px) {
+  .books-grid {
+    grid-template-columns: 300px;
+    grid-gap: 7vw;
+  }
+  .search-input {
+    width: 60vw;
+  }
+}
