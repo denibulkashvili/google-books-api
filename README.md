@@ -2,7 +2,7 @@
 
 # Project Description
 
-This project is built with React, and styled using CSS, Flexbox and Grid. 
+This project is built with React and Google Books API, and styled using CSS, Flexbox and Grid. 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
